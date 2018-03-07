@@ -1,0 +1,14 @@
+DROP TABLE IF EXISTS maintenance_roster;
+DROP TABLE IF EXISTS maintenance;
+DROP TABLE IF EXISTS unpowered;
+DROP TABLE IF EXISTS trainer;
+DROP TABLE IF EXISTS rental;
+DROP TABLE IF EXISTS payment_method;
+DROP TABLE IF EXISTS participant;
+DROP TABLE IF EXISTS powered;
+DROP TABLE IF EXISTS training_camp;
+DROP TABLE IF EXISTS equipment;
+DROP TABLE IF EXISTS location;
+DROP TABLE IF EXISTS employee;
+DROP TABLE IF EXISTS customer;
+DROP TABLE IF EXISTS client;
