@@ -1,0 +1,54 @@
+
+<!DOCTYPE html>
+
+<html>
+    <head>
+        <title>Add title</title>
+        <meta charset="UTF-8" />
+        <link href="../styles/main.css" type="text/css" rel="stylesheet" />
+    </head>
+    <body>
+        <div class="site-header">
+
+            <a class="site-header login" href="">Login|Signup</a>
+
+            <!-- Remove temp logo later with style element. -->
+            <p class="templogo">Temp Logo place holder.</p>
+            <!-- Up to here -->
+
+            <ul>
+                <li>
+                        <a href="../index.html">News</a>
+                </li>
+                <li>
+                    <a href="../products/index.html">Products</a>
+                </li>
+                <li>
+                    <a href="../rent/index.html">Rent</a>
+                </li>
+                <li>
+                    <a href="../about/index.html">About Us</a>
+                </li>
+                <li>
+                    <a href="../contact/index.html">Contact Us</a>
+                </li>
+            </ul>
+        </div>
+
+        <!-- Set login to find correct page.php -->
+        <br />
+        <br />
+		<form class="login" action="login.php" method="get">
+			<p>
+				<label>Username:</label>
+				<input type="text" name="username" size="15" maxlength="30" />
+			</p>
+			<p>
+				<label>Password:</label>
+				<input type="password" name="password" size="15" maxlength="30" />
+			</p>
+			<input type="submit" name="Login" value="Login" />
+		</form>
+        <!-- Up to here -->
+    </body>
+</html>

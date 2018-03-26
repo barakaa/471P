@@ -1,0 +1,82 @@
+
+body {
+	font-size: 62.5%;
+	font-family: Arial, sans-serif, monospace;
+	margin: 0;
+	padding: 0;
+	background-color: #DEB887; /* Color = peru */
+}
+
+* {
+	margin: 0;
+	padding: 0;
+}
+
+.wrapper {
+	font-size: 1.6em;
+}
+
+.site-header {
+	font-size: 1.6em;
+	text-align: center;
+	position: relative;
+	color: white;
+}
+
+.site-header ul {
+	background-color: #D2691E; /* Color = chocolate but it's orange? */
+	/*list-style-type: none;*/
+	width: 100%;
+}
+
+.site-header li {
+	display: inline;
+	margin-right: 5%;
+	margin-left: 5%;
+}
+
+.site-header a {
+	font-size: 2.4em;
+	color: white;
+}
+
+.site-header a:hover {
+	color: #D3D3D3; /* Color = light gray */
+}
+
+.site-header .login {
+	font-size: 1em;
+	margin-right: 5%;
+	float: right;
+	color: black;
+}
+
+.site-header .login:hover {
+	color: white;
+}
+
+.templogo {
+	background-color: black;
+	width: 70px;
+	padding: 5px;
+	margin: 10px;
+	color: white;
+}
+
+.site-body {
+	font-size: 5.4em;
+	text-align: center;
+	color: #D2691E;
+	vertical-align: middle;
+
+}
+
+.login {
+	font-size: 3.2em;
+	text-align: center;
+	color: black;
+}
+
+a:link, a:visited {
+	text-decoration: none;
+}
