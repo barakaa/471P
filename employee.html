@@ -1,0 +1,196 @@
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Employee page</title>
+    <link href="471_style.css" rel = "stylesheet">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
+    <script type="text/javascript">
+
+        //Helper function, creates a PHP request for the specified PHP file with the given arguments
+        function callPHP(scriptName, args){
+            //scriptName is a string, the name of a PHP function (eg "test.php")
+            //args is an array of parameters to be passed to the PHP function, in order.
+            console.log("start callPHP function");
+            var toSend = new XMLHttpRequest();
+            toSend.onreadystatechange = function() {
+                if (this.readyState === 4 && this.status === 200) {
+                    $('#phpReply').empty()
+                        .append('<h1> Server Reply </h1>')
+                        .append(this.responseText);
+                }
+            };
+            let urlString = "";
+            urlString = urlString + scriptName + "?";
+            for (let i = 0; i < args.length; i++){
+                urlString = urlString + "arg" + i + "=" + args[i] + "&";
+            }
+            urlString.slice(0, urlString.length-2);
+            console.log("what is being called: " +
+                urlString.slice(0, urlString.length-1));
+            toSend.open("GET", urlString.slice(0, urlString.length-1), true);
+            toSend.send();
+        }
+        window.onload = function(){
+            var button = document.getElementById("button1");
+            button.onclick = function(){
+                //Add new equipment function
+                //Add fields for equipment_id, price per day, weight, status and location name to body
+                $('#commandTitle').empty()
+                    .append("Add New Equipment")
+                $('#inputArea').empty()
+                            .append('<form id="input" target="result"></form>')
+                          .append('<button id = "submit new equipment"> Submit button </button>')
+                $('#input').append('Price per day <input type="text" id = "input price per day"><br>')
+                            .append('Weight  <input type="text" id="input weight"><br>')
+                            .append('Available  <input type="radio" name = "status" value="available" checked>')
+                            .append('Rented  <input type="radio" name = "status" value="rented">')
+                            .append('Under Maintenence  <input type="radio" name = "status" value="maintenance">')
+                            .append('<br>Location Name  <input type="text" id = "input loc name"><br>')
+
+                button = document.getElementById("submit new equipment");
+                button.onclick = function() {
+                    let testArgs = [];
+                    let temp = document.getElementById("input price per day").value;
+                    testArgs.push(temp);
+                    temp = document.getElementById("input weight").value;
+                    testArgs.push(temp);
+                    temp = $('input[name=status]:checked', '#input').val();
+                    temp = temp.toString().charAt(0);
+                    testArgs.push(temp);
+                    temp = document.getElementById("input loc name").value;
+                    testArgs.push(temp);
+                    temp = Date.now();
+                    testArgs.push(temp);
+                    callPHP("test.php", testArgs);
+                }
+            };
+
+            button = document.getElementById("button2");
+            button.onclick = function(){
+                //Remove existing equipment function
+                $('#commandTitle').empty()
+                    .append("Remove Existing Equipment")
+                $('#inputArea').empty()
+                    .append('<form action="/scriptName2Here.php" id="input"></form>')
+                $('#input').append('Equipment ID <input type="text"><br>')
+                    .append('<input type="submit"value="submit"><br>')
+
+            };
+
+
+            button = document.getElementById("button3");
+            button.onclick = function(){
+                //confirm user card
+                $('#commandTitle').empty()
+                    .append("Confirm User Credit card")
+                $('#inputArea').empty()
+                    .append('<form action="/scriptName3Here.php" id="input"></form>')
+                $('#input').append('Customer Username <input type="text"><br>')
+                    .append('<input type="submit"value="submit"><br>')
+            };
+
+
+
+            button = document.getElementById("button4");
+            button.onclick = function(){
+                //Create new maintanence
+                $('#commandTitle').empty()
+                    .append("Create new Maintanence")
+                $('#inputArea').empty()
+                    .append('<form action="/scriptName4Here.php" id="input"></form>')
+                $('#input').append('Start Date <input type="text"><br>')
+                    .append('Finish Date <input type="text"><br>')
+                    .append('Equipment ID <input type="text"><br>')
+                    .append('Cost <input type="text"><br>')
+                    .append('<input type="submit"value="submit"><br>')
+            };
+
+
+            button = document.getElementById("button5");
+            button.onclick = function(){
+                $('#commandTitle').empty()
+                    .append("Update User Account Information")
+                $('#inputArea').empty()
+                    .append('<form action="/scriptName5Here.php" id="input"></form>')
+                $('#input').append('Current Username <input type="text"><br>')
+                    .append('Current Password <input type="text"><br>')
+                    .append('New Password <input type="text"><br>')
+                    .append('New Date of Birth <input type="text"><br>')
+                    .append('<input type="submit"value="submit"><br>')
+            };
+
+
+            button = document.getElementById("button6");
+            button.onclick = function(){
+                $('#commandTitle').empty()
+                    .append("Update Rental")
+                $('#inputArea').empty()
+                    .append('<form action="/scriptName6Here.php" id="input"></form>')
+                $('#input').append('Equipment ID <input type="text"><br>')
+                    .append('Rental Start Date <input type="text"><br>')
+                    .append('Rental Return Date <input type="text"><br>')
+                    .append('<input type="submit"value="submit"><br>')
+            };
+
+
+            button = document.getElementById("button7");
+            button.onclick = function(){
+                $('#commandTitle').empty()
+                    .append("Display User List")
+                $('#inputArea').empty()
+                    .append('<form action="/testScript.php" id="input"></form>')
+                $('#input').append('<input type="submit"value="Get Data"><br>')
+            };
+
+
+            button = document.getElementById("button8");
+            button.onclick = function(){
+                $('#commandTitle').empty()
+                    .append("Display Rental List")
+                $('#inputArea').empty()
+                    .append('<form action="/scriptName6Here.php" id="input"></form>')
+                $('#input').append('<input type="submit"value="Get Data"><br>')
+            };
+
+
+            button = document.getElementById("button9");
+            button.onclick = function(){
+                $('#commandTitle').empty()
+                    .append("Display Maintanence Schedule")
+                $('#inputArea').empty()
+                    .append('<form action="/scriptName6Here.php" id="input"></form>')
+                $('#input').append('<input type="submit"value="Get Data"><br>')
+            };
+        }
+    </script>
+</head>
+<body>
+<div class="page-container">
+    <div class="menu">
+        <h3 style="padding-top: 4%; padding-bottom: 10%">Main Menu</h3>
+        <button class = "menuButton" id = "button1" type="button">Add new Equipment</button>
+        <button class = "menuButton" id = "button2" type="button">Remove Equipment</button>
+        <button class = "menuButton" id = "button3" type="button">Confirm user card</button>
+        <button class = "menuButton" id = "button4" type="button">Create new Maintanence</button>
+        <button class = "menuButton" id = "button5" type="button">Update account information</button>
+        <button class = "menuButton" id = "button6" type="button">Update Rental</button>
+
+        <button class = "menuButton" id = "button7" type="button">Display User List</button>
+        <button class = "menuButton" id = "button8" type="button">Display Rental List</button>
+        <button class = "menuButton" id = "button9" type="button">Display Maintanence Schedule</button>
+        <button class = "menuButton" id = "testButton" type="button">Testing</button>
+
+
+
+    </div>
+    <div class="window">
+        <h1 id="Input Window"> Employee </h1>
+        <h2 id = "commandTitle"> </h2>
+        <div id = "inputArea"></div>
+        <div id = "phpReply"></div>
+    </div>
+</div>
+
+</body>
+</html>
