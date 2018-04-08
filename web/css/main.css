@@ -1,0 +1,30 @@
+html {
+    background: #5BBA6F;
+}
+
+#container {
+    overflow: hidden;
+    width: 500px;
+    padding-top: 100px;
+    margin: 0 auto;
+}
+
+#username, #password {
+    width: 90%;
+}
+
+#content {
+    width: 60%;
+    margin: auto;
+}
+
+#login-box {
+    border: solid 1px black;
+    padding: 7px;
+    background: #FFBB2A;
+}
+
+.buttons {
+    padding-top: 7px;
+    text-align: center;
+}
