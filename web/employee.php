@@ -151,8 +151,8 @@ if (!isset($_SESSION['user']))
                     .append('<form id="input"></form>')
                     .append('<button id = "submit button"> Submit </button>')
                 $('#input').append('Current Username <input id = "input1" type="text"><br>')
-                    .append('Current Password <input id = "input2" type="text"><br>')
-                    .append('New Password <input id = "input3" type="text"><br>')
+                    .append('Current Password <input id = "input2" type="password"><br>')
+                    .append('New Password <input id = "input3" type="password"><br>')
 
                 button = document.getElementById("submit button");
                 button.onclick = function(){
@@ -163,7 +163,7 @@ if (!isset($_SESSION['user']))
                     args.push(inText);
                     inText = document.getElementById("input3").value;
                     args.push(inText);
-                    callPHP("updateUser.php", args);
+                    callPHP("pscripts/updateUser.php", args);
                 }
             };
 
@@ -181,7 +181,7 @@ if (!isset($_SESSION['user']))
                     let args = [];
                     let inText = document.getElementById("input1").value;
                     args.push(inText);
-                    callPHP("upgradeUser.php", args);
+                    callPHP("pscripts/upgradeUser.php", args);
                 }
             };
 
@@ -294,8 +294,8 @@ if (!isset($_SESSION['user']))
                     .append('<form id="input"></form>')
                     .append('<button id = "submit button"> Submit </button>')
                 $('#input').append('Equipment ID <input id = "input1" type="text"><br>')
-                    .append('Start Date <input id = "input2" type="text"><br>')
-                    .append('Finish Date <input id = "input3" type="text"><br>')
+                    .append('Start Date <input id = "input2" type="date"><br>')
+                    .append('Finish Date <input id = "input3" type="date"><br>')
                     .append('Camp ID <input id = "input4" type="text"><br>')
 
                 button = document.getElementById("submit button");
@@ -309,7 +309,7 @@ if (!isset($_SESSION['user']))
                     args.push(inText);
                     inText = document.getElementById("input4").value;
                     args.push(inText);
-                    callPHP("createTraining.php", args);
+                    callPHP("pscripts/createTraining.php", args);
                 }
             };
 
@@ -321,8 +321,8 @@ if (!isset($_SESSION['user']))
                     .append('<form id="input"></form>')
                     .append('<button id = "submit button"> Submit </button>')
                 $('#input').append('Equipment ID <input id = "input1" type="text"><br>')
-                    .append('Start Date <input id = "input2" type="text"><br>')
-                    .append('Finish Date <input id = "input3" type="text"><br>')
+                    .append('Start Date <input id = "input2" type="date"><br>')
+                    .append('Finish Date <input id = "input3" type="date"><br>')
                     .append('Camp ID <input id = "input4" type="text"><br>')
 
                 button = document.getElementById("submit button");
@@ -357,7 +357,7 @@ if (!isset($_SESSION['user']))
                     args.push(inText);
                     inText = document.getElementById("input2").value;
                     args.push(inText);
-                    callPHP("deleteTraining.php", args);
+                    callPHP("pscripts/deleteTraining.php", args);
                 }
             };
 
@@ -368,8 +368,9 @@ if (!isset($_SESSION['user']))
                 $('#inputArea').empty()
                     .append('<form id="input"></form>')
                     .append('<button id = "submit button"> Submit </button>')
-                $('#input').append('Camp ID <input id = "input1" type="text"><br>')
-                    .append('Employee Username <input id = "input2" type="text"><br>')
+                $('#input').append('Equipment ID <input id = "input1" type="text"><br>')
+                    .append('Camp ID <input id = "input2" type="text"><br>')
+                    .append('Employee Username <input id = "input3" type="text"><br>')
 
                 button = document.getElementById("submit button");
                 button.onclick = function(){
@@ -378,7 +379,9 @@ if (!isset($_SESSION['user']))
                     args.push(inText);
                     inText = document.getElementById("input2").value;
                     args.push(inText);
-                    callPHP("addTrainer.php", args);
+                    inText = document.getElementById("input3").value;
+                    args.push(inText);
+                    callPHP("pscripts/addTrainer.php", args);
                 }
             };
 
@@ -389,8 +392,9 @@ if (!isset($_SESSION['user']))
                 $('#inputArea').empty()
                     .append('<form id="input"></form>')
                     .append('<button id = "submit button"> Submit </button>')
-                $('#input').append('Camp ID <input id = "input1" type="text"><br>')
-                    .append('Employee Username <input id = "input2" type="text"><br>')
+                $('#input').append('Equipment ID <input id = "input1" type="text"><br>')
+                    .append('Camp ID <input id = "input2" type="text"><br>')
+                    .append('Employee Username <input id = "input3" type="text"><br>')
 
                 button = document.getElementById("submit button");
                 button.onclick = function(){
@@ -399,7 +403,9 @@ if (!isset($_SESSION['user']))
                     args.push(inText);
                     inText = document.getElementById("input2").value;
                     args.push(inText);
-                    callPHP("removeTrainer.php", args);
+                    inText = document.getElementById("input3").value;
+                    args.push(inText);
+                    callPHP("pscripts/removeTrainer.php", args);
                 }
             };
 

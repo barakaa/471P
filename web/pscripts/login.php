@@ -46,7 +46,7 @@ if (empty($luser) || empty($lpass)) {
                         mysqli_close($conn);
                         exit();
                     } else {
-                        header("Location: ..index.php?login=errordne");
+                        header("Location: ../index.php?login=errordne");
                         mysqli_close($conn);
                         exit();
                     }
