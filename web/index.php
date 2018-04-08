@@ -9,7 +9,7 @@
 <body>
 <div id="container">
     <div id="content">
-        <form id="login-box" method="post" action="login.php">
+        <form id="login-box" method="post" action="pscripts/login.php">
             <table>
                 <tr>
                     <td><label for="username">Username:</label></td>
