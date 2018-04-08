@@ -1,3 +1,8 @@
+<?php
+session_start();
+if (!isset($_SESSION['user']))
+    header("Location: index.php");
+?>
 <html>
 <head>
     <meta charset="UTF-8">
@@ -209,6 +214,7 @@
         <button class = "menuButton" id = "button6" type="button">Register for Training Camp</button>
 
         <button class = "menuButton" id = "button7" type="button">Leave a Camp</button>
+        <form method="get" action="pscripts/logout.php"><button class="menuButton" id="logoutButton" type="submit">Log Out</button></form>
     </div>
     <div class="window">
         <h1 id="Input Window"> Employee </h1>
