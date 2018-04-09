@@ -121,8 +121,8 @@ if (!isset($_SESSION['user']))
                 $('#inputArea').empty()
                     .append('<form  id="input"></form>')
                     .append('<button id = "submit button"> Submit </button>')
-                $('#input').append('Start Date <input id = "input1" type="text"><br>')
-                    .append('Finish Date <input id = "input2" type="text"><br>')
+                $('#input').append('Start Date <input id = "input1" type="date"><br>')
+                    .append('Finish Date <input id = "input2" type="date"><br>')
                     .append('Equipment ID <input id = "input3" type="text"><br>')
                     .append('Cost <input id = "input4" type="text"><br>')
 
@@ -193,8 +193,8 @@ if (!isset($_SESSION['user']))
                     .append('<form id="input"></form>')
                     .append('<button id = "submit button"> Submit </button>')
                 $('#input').append('Equipment ID <input id = "input1" type="text"><br>')
-                    .append('Rental Start Date <input id = "input2" type="text"><br>')
-                    .append('Rental Return Date <input id = "input3" type="text"><br>')
+                    .append('Rental Start Date <input id = "input2" type="date"><br>')
+                    .append('Rental Return Date <input id = "input3" type="date"><br>')
 
                 button = document.getElementById("submit button");
                 button.onclick = function(){

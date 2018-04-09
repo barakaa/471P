@@ -31,8 +31,10 @@ if (!isset($_SESSION['user']))
                 urlString = urlString + "arg" + i + "=" + args[i] + "&";
             }
             urlString.slice(0, urlString.length-2);
+            /*
             console.log("what is being called: " +
                 urlString.slice(0, urlString.length-1));
+                */
             toSend.open("GET", urlString.slice(0, urlString.length-1), true);
             toSend.send();
         }
@@ -47,8 +49,8 @@ if (!isset($_SESSION['user']))
                     .append('<button id = "submit button"> Submit </button>')
                 $('#input').append('Equipment ID <input type="text" id = "input1"><br>')
                     .append('Username <input type="text" id = "input2"><br>')
-                    .append('Start Date <input type="text" id = "input3"><br>')
-                    .append('End Date <input type="text" id = "input4"><br>')
+                    .append('Start Date <input type="date" id = "input3"><br>')
+                    .append('End Date <input type="date" id = "input4"><br>')
 
 
                 button = document.getElementById("submit button");
@@ -78,8 +80,8 @@ if (!isset($_SESSION['user']))
                     .append('<button id = "submit button"> Submit </button>')
                 $('#input').append('Equipment ID <input type="text" id = "input1"><br>')
                     .append('Username <input type="text" id = "input2"><br>')
-                    .append('Start Date <input type="text" id = "input3"><br>')
-                    .append('End Date <input type="text" id = "input4"><br>')
+                    .append('Start Date <input type="date" id = "input3"><br>')
+                    .append('End Date <input type="date" id = "input4"><br>')
 
                 button = document.getElementById("submit button");
                 button.onclick = function () {
@@ -106,8 +108,8 @@ if (!isset($_SESSION['user']))
                         .append('<button id = "submit button"> Submit </button>')
                     $('#input').append('Equipment ID <input type="text" id = "input1"><br>')
                         .append('Username <input type="text" id = "input2"><br>')
-                        .append('Start Date <input type="text" id = "input3"><br>')
-                        .append('End Date <input type="text" id = "input4"><br>')
+                        .append('Start Date <input type="date" id = "input3"><br>')
+                        .append('End Date <input type="date" id = "input4"><br>')
 
                     button = document.getElementById("submit button");
                     button.onclick = function () {
@@ -218,7 +220,7 @@ if (!isset($_SESSION['user']))
         <form method="get" action="pscripts/logout.php"><button class="menuButton" id="logoutButton" type="submit">Log Out</button></form>
     </div>
     <div class="window">
-        <h1 id="Input Window"> Employee </h1>
+        <h1 id="Input Window"> Customer </h1>
         <h2 id = "commandTitle"> </h2>
         <div id = "inputArea"></div>
         <div id = "phpReply"></div>
