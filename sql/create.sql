@@ -25,16 +25,18 @@ CREATE TABLE customer (
     data_account_created DATE NOT NULL,
     PRIMARY KEY (username),
     FOREIGN KEY (username) REFERENCES client (username)
+	ON DELETE CASCADE
 );
 
 CREATE TABLE employee (
     username VARCHAR(30) NOT NULL,
-    can_train INT NOT NULL, -- double check type
-    can_repair INT NOT NULL, -- double check type
+    can_train INT NOT NULL,
+    can_repair INT NOT NULL,
     salary INT NOT NULL,
     date_hired DATE NOT NULL,
     PRIMARY KEY (username),
     FOREIGN KEY (username) REFERENCES client (username)
+	ON DELETE CASCADE
 );
 
 CREATE TABLE location (
@@ -45,100 +47,112 @@ CREATE TABLE location (
 );
 
 CREATE TABLE equipment (
-    equip_id NUMERIC(7) NOT NULL,
+    equip_id INT NOT NULL AUTO_INCREMENT,
     price_per_day INT NOT NULL,
     weight INT,
     status CHAR(1),
     loc_name VARCHAR(255),
     PRIMARY KEY (equip_id),
     FOREIGN KEY (loc_name) REFERENCES location (name)
+        ON DELETE CASCADE
 );
 
 CREATE TABLE training_camp (
-    equip_id NUMERIC(7) NOT NULL,
+    equip_id INT NOT NULL,
     camp_id CHAR(10) NOT NULL,
     start_date DATE NOT NULL,
     end_date DATE NOT NULL,
     CONSTRAINT pk_training_camp PRIMARY KEY (equip_id, camp_id),
     FOREIGN KEY (equip_id) REFERENCES equipment (equip_id)
+        ON DELETE CASCADE
 );
 
 CREATE TABLE maintenance (
     start_date DATE NOT NULL,
-    equip_id NUMERIC(7) NOT NULL,
+    equip_id INT NOT NULL,
     finish_date DATE,
     cost INT NOT NULL,
     PRIMARY KEY (start_date, equip_id),
     FOREIGN KEY (equip_id) REFERENCES equipment (equip_id)
+        ON DELETE CASCADE
 );
 
 CREATE TABLE maintenance_roster (
     emp_username VARCHAR(30) NOT NULL,
     start_date DATE NOT NULL,
-    equip_id NUMERIC(7),
+    equip_id INT,
     PRIMARY KEY (emp_username, start_date, equip_id),
-    CONSTRAINT maintenance_roster_fk1 FOREIGN KEY (emp_username) REFERENCES employee (username),
+    CONSTRAINT maintenance_roster_fk1 FOREIGN KEY (emp_username) REFERENCES employee (username)
+        ON DELETE CASCADE,
     CONSTRAINT maintenance_roster_fk2 FOREIGN KEY (equip_id) REFERENCES equipment (equip_id)
+        ON DELETE CASCADE
 );
 
 CREATE TABLE powered (
-    equip_id NUMERIC(7) NOT NULL,
+    equip_id INT NOT NULL,
     fuel_type VARCHAR(10),
     fuel_economy VARCHAR(10), -- double check type
     cargo_capacity INT,
     occupant_capacity INT,
     PRIMARY KEY (equip_id),
     FOREIGN KEY (equip_id) REFERENCES equipment (equip_id)
+        ON DELETE CASCADE
 );
 
 CREATE TABLE payment_method (
-    payment_type VARCHAR(10) NOT NULL, -- double check type
+    payment_type VARCHAR(10) NOT NULL,
     emp_username VARCHAR(30) NOT NULL,
     cust_username VARCHAR(30) NOT NULL,
     available_balance INT NOT NULL,
     PRIMARY KEY (payment_type, emp_username, cust_username, available_balance),
-    CONSTRAINT payment_method_fk1 FOREIGN KEY (emp_username) REFERENCES employee (username),
+    CONSTRAINT payment_method_fk1 FOREIGN KEY (emp_username) REFERENCES employee (username)
+        ON DELETE CASCADE,
     CONSTRAINT payment_method_fk2 FOREIGN KEY (cust_username) REFERENCES customer (username)
+        ON DELETE CASCADE
 );
 
 CREATE TABLE rental (
-    equip_id NUMERIC(7) NOT NULL,
+    equip_id INT NOT NULL,
     cust_username VARCHAR(30) NOT NULL,
     start_date DATE NOT NULL,
     return_date DATE NOT NULL,
     insurance_payment VARCHAR(255),
     insurance_coverage VARCHAR(255),
     PRIMARY KEY (start_date, cust_username, equip_id),
-    CONSTRAINT rental_fk1 FOREIGN KEY (cust_username) REFERENCES customer (username),
+    CONSTRAINT rental_fk1 FOREIGN KEY (cust_username) REFERENCES customer (username)
+        ON DELETE CASCADE,
     CONSTRAINT rental_fk2 FOREIGN KEY (equip_id) REFERENCES equipment (equip_id)
+        ON DELETE CASCADE
 );
 
 CREATE TABLE participant (
-    equip_id NUMERIC(7) NOT NULL,
+    equip_id INT NOT NULL,
     camp_id CHAR(10) NOT NULL,
     cust_username VARCHAR(30) NOT NULL,
     PRIMARY KEY (camp_id, cust_username),
-    CONSTRAINT participant_fk1 FOREIGN KEY (equip_id, camp_id) REFERENCES training_camp (equip_id, camp_id),
+    CONSTRAINT participant_fk1 FOREIGN KEY (equip_id, camp_id) REFERENCES training_camp (equip_id, camp_id)
+        ON DELETE CASCADE,
     CONSTRAINT participant_fk2 FOREIGN KEY (cust_username) REFERENCES customer (username)
+        ON DELETE CASCADE
 );
 
 CREATE TABLE trainer (
-    equip_id NUMERIC(7) NOT NULL,
+    equip_id INT NOT NULL,
     camp_id CHAR(10) NOT NULL,
     emp_username VARCHAR(30) NOT NULL,
     PRIMARY KEY (camp_id, emp_username),
-    CONSTRAINT trainer_fk1 FOREIGN KEY (equip_id, camp_id) REFERENCES training_camp (equip_id, camp_id),
+    CONSTRAINT trainer_fk1 FOREIGN KEY (equip_id, camp_id) REFERENCES training_camp (equip_id, camp_id)
+        ON DELETE CASCADE,
     CONSTRAINT trainer_fk2 FOREIGN KEY (emp_username) REFERENCES employee (username)
+        ON DELETE CASCADE
 );
 
 
 CREATE TABLE unpowered (
-    equip_id NUMERIC(7) NOT NULL,
+    equip_id INT NOT NULL,
     intended_use VARCHAR(255),
-    insurance_required CHAR(1) NOT NULL, -- double check type
+    insurance_required CHAR(1) NOT NULL,
     PRIMARY KEY (equip_id),
     FOREIGN KEY (equip_id) REFERENCES equipment (equip_id)
+        ON DELETE CASCADE
 );
-
-INSERT INTO client VALUES ('admin', '$2y$10$TDSKb.2EYM9bnwC1hXT9I.nN19kEw4IrA.v3UDwv30t720UsHawNC', '2018-03-29');
-INSERT INTO employee VALUES ('admin', 0, 0, 0, '2018-03-29');
