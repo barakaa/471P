@@ -156,3 +156,6 @@ CREATE TABLE unpowered (
     FOREIGN KEY (equip_id) REFERENCES equipment (equip_id)
         ON DELETE CASCADE
 );
+
+INSERT INTO client (username,cl_pass,dob) VALUES ('admin','$2y$10$TDSKb.2EYM9bnwC1hXT9I.nN19kEw4IrA.v3UDwv30t720UsHawNC','1973-06-24');
+INSERT INTO employee (username, can_train, can_repair, salary, date_hired) VALUES ('admin', 0, 0, 0, '2018-03-29');
