@@ -66,7 +66,7 @@ CREATE TABLE training_camp (
 CREATE TABLE maintenance (
     start_date DATE NOT NULL,
     equip_id NUMERIC(7) NOT NULL,
-    finish_data DATE,
+    finish_date DATE,
     cost INT NOT NULL,
     PRIMARY KEY (start_date, equip_id),
     FOREIGN KEY (equip_id) REFERENCES equipment (equip_id)
