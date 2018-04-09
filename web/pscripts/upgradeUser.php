@@ -1,4 +1,5 @@
 <?php
+session_start();
 include_once('db.php');
 if (!$conn) die("Connection failed: " . mysqli_connect_error());
 $username = mysqli_real_escape_string($conn, $_REQUEST["arg0"]);
@@ -15,7 +16,7 @@ if ($numAccounts == 1) {
             echo "Customer $username is now an employee";
         }
     }
-} else { // TODO: change this?
+} else {
     echo "Customer not found";
 }
 mysqli_close($conn);

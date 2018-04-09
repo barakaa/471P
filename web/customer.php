@@ -62,7 +62,7 @@ if (!isset($_SESSION['user']))
                     args.push(inText);
                     inText = document.getElementById("input4").value;
                     args.push(inText);
-                    callPHP("placeRental.php", args);
+                    callPHP("pscripts/placeRental.php", args);
                 }
 
             };
@@ -92,7 +92,7 @@ if (!isset($_SESSION['user']))
                     args.push(inText);
                     inText = document.getElementById("input4").value;
                     args.push(inText);
-                    callPHP("deleteRental.php", args);
+                    callPHP("pscripts/deleteRental.php", args);
                 }
             };
 
@@ -120,7 +120,7 @@ if (!isset($_SESSION['user']))
                         args.push(inText);
                         inText = document.getElementById("input4").value;
                         args.push(inText);
-                        callPHP("updateRental.php", args);
+                        callPHP("pscripts/updateRental.php", args);
                     }
                 };
 
@@ -139,7 +139,7 @@ if (!isset($_SESSION['user']))
                     let args = [];
                     let inText = document.getElementById("input1").value;
                     args.push(inText);
-                    callPHP("myRentalList.php", args);
+                    callPHP("pscripts/myRentalList.php", args);
                 }
 
             };
@@ -149,8 +149,9 @@ if (!isset($_SESSION['user']))
                 //Display all my rentals
                 $('#commandTitle').empty()
                     .append("Training Camps")
+                $('#inputArea').empty();
                 let args = [];
-                callPHP("displayCampList.php", args);
+                callPHP("pscripts/displayCampList.php", args);
             };
 
 
@@ -162,7 +163,7 @@ if (!isset($_SESSION['user']))
                 $('#inputArea').empty()
                     .append('<form id="input"></form>')
                     .append('<button id = "submit button"> Submit </button>')
-                $('#input').append('Username <input type="text" id = "input1"><br>')
+                $('#input').append('Equipment ID <input type="text" id = "input1"><br>')
                     .append('Camp ID <input type="text" id = "input2"><br>')
 
                 button = document.getElementById("submit button");
@@ -172,7 +173,7 @@ if (!isset($_SESSION['user']))
                     args.push(inText);
                     inText = document.getElementById("input2").value;
                     args.push(inText);
-                    callPHP("campRegister.php", args);
+                    callPHP("pscripts/campRegister.php", args);
                 }
 
             };
@@ -185,8 +186,8 @@ if (!isset($_SESSION['user']))
                 $('#inputArea').empty()
                     .append('<form id="input"></form>')
                     .append('<button id = "submit button"> Submit </button>')
-                $('#input').append('Username <input type="text" id = "input1"><br>')
-                    .append('Camp ID <input type="text" id = "input1"><br>')
+                $('#input').append('Equipment ID <input type="text" id = "input1"><br>')
+                    .append('Camp ID <input type="text" id = "input2"><br>')
 
                 button = document.getElementById("submit button");
                 button.onclick = function(){
@@ -195,7 +196,7 @@ if (!isset($_SESSION['user']))
                     args.push(inText);
                     inText = document.getElementById("input2").value;
                     args.push(inText);
-                    callPHP("campDeregister.php", args);
+                    callPHP("pscripts/campDeregister.php", args);
                 }
             };
         }

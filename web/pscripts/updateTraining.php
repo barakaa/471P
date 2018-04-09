@@ -10,6 +10,8 @@ if (strlen($equipID) == 0 || empty($startDate) || empty($finishDate) || empty($c
     echo "Fill all fields";
 } elseif (preg_match("/[^a-zA-Z0-9]/", $campID)) {
     echo "Camp name must be alphanumeric<br>";
+} elseif (preg_match("/[^0-9]/", $equipID)) {
+    echo "Equipment ID must be a number<br>";
 } else {
     if (strtotime($finishDate) < strtotime($startDate)) {
         echo "Finish date must be after start date<br>";
@@ -25,17 +27,17 @@ if (strlen($equipID) == 0 || empty($startDate) || empty($finishDate) || empty($c
             $locResult = mysqli_query($conn, $locQuery);
             $numLoc = mysqli_num_rows($locResult);
             if ($numLoc < 1) {
-                echo "Location does not exsits";
+                echo "Location does not exist<br>";
             } else {
                 $query1 = "SELECT * FROM training_camp WHERE equip_id='$equipID' AND camp_id='$campID'";
                 $result1 = mysqli_query($conn, $query1);
                 $numRows1 = mysqli_num_rows($result1);
-                if ($numRows1 > 0) {
-                    echo "Camp already exists<br>";
+                if ($numRows1 < 0) {
+                    echo "Camp does not exists<br>";
                 } else {
-                    $insertQuery = "INSERT INTO training_camp (equip_id, camp_id, start_date, end_date) VALUES ('$equipID','$campID','$startDate','$finishDate')";
-                    if (mysqli_query($conn, $insertQuery)){
-                        echo "Created camp";
+                    $updateQuery = "UPDATE training_camp SET start_date='$startDate', end_date='$finishDate' WHERE equip_id=$equipID AND camp_id='$campID'";
+                    if (mysqli_query($conn, $updateQuery)) {
+                        echo "Updated camp<br>";
                     }
                 }
             }

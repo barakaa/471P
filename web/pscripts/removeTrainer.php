@@ -1,4 +1,5 @@
 <?php
+session_start();
 include_once('db.php');
 if (!$conn) die("Connection failed: " . mysqli_connect_error());
 $equipId = mysqli_real_escape_string($conn, $_REQUEST['arg0']);

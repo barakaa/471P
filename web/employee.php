@@ -67,7 +67,7 @@ if (!isset($_SESSION['user']))
                     testArgs.push(temp);
                     temp = Date.now();
                     testArgs.push(temp);
-                    callPHP("addEquip.php", testArgs);
+                    callPHP("pscripts/addEquip.php", testArgs);
                 }
             };
 
@@ -86,7 +86,7 @@ if (!isset($_SESSION['user']))
                     let args = [];
                     let inText = document.getElementById("input1").value;
                     args.push(inText);
-                    callPHP("removeEquip.php", args);
+                    callPHP("pscripts/removeEquip.php", args);
                 }
 
             };
@@ -107,7 +107,7 @@ if (!isset($_SESSION['user']))
                     let args = [];
                     let inText = document.getElementById("input1").value;
                     args.push(inText);
-                    callPHP("confirmCard.php", args);
+                    callPHP("pscripts/confirmCard.php", args);
                 }
             };
 
@@ -138,7 +138,7 @@ if (!isset($_SESSION['user']))
                     inText = document.getElementById("input4").value;
                     args.push(inText);
 
-                    callPHP("createMaint.php", args);
+                    callPHP("pscripts/createMaint.php", args);
                 }
             };
 
@@ -150,14 +150,13 @@ if (!isset($_SESSION['user']))
                 $('#inputArea').empty()
                     .append('<form id="input"></form>')
                     .append('<button id = "submit button"> Submit </button>')
-                $('#input').append('Current Username <input id = "input1" type="text"><br>')
-                    .append('Current Password <input id = "input2" type="password"><br>')
+                $('#input').append('Current Password <input id = "input2" type="password"><br>')
                     .append('New Password <input id = "input3" type="password"><br>')
 
                 button = document.getElementById("submit button");
                 button.onclick = function(){
                     let args = [];
-                    let inText = document.getElementById("input1").value;
+                    let inText = "";
                     args.push(inText);
                     inText = document.getElementById("input2").value;
                     args.push(inText);
@@ -206,7 +205,7 @@ if (!isset($_SESSION['user']))
                     args.push(inText);
                     inText = document.getElementById("input3").value;
                     args.push(inText);
-                    callPHP("updateRental.php", args);
+                    callPHP("pscripts/updateRental.php", args);
                 }
             };
 
@@ -221,7 +220,7 @@ if (!isset($_SESSION['user']))
                 button = document.getElementById("submit button");
                 button.onclick = function(){
                     let args = [];
-                    callPHP("dispUsers.php", args);
+                    callPHP("pscripts/dispUsers.php", args);
                 }
             };
 
@@ -236,7 +235,7 @@ if (!isset($_SESSION['user']))
                 button = document.getElementById("submit button");
                 button.onclick = function(){
                     let args = [];
-                    callPHP("dispRentals.php", args);
+                    callPHP("pscripts/dispRentals.php", args);
                 }
             };
 
@@ -251,7 +250,7 @@ if (!isset($_SESSION['user']))
                 button = document.getElementById("submit button");
                 button.onclick = function(){
                     let args = [];
-                    callPHP("dispMaint.php", args);
+                    callPHP("pscripts/dispMaint.php", args);
                 }
             };
 
@@ -282,7 +281,7 @@ if (!isset($_SESSION['user']))
                     args.push(inText);
                     inText = document.getElementById("input3").value;
                     args.push(inText);
-                    callPHP("addPayment.php", args);
+                    callPHP("pscripts/addPayment.php", args);
                 }
             };
 
@@ -336,7 +335,7 @@ if (!isset($_SESSION['user']))
                     args.push(inText);
                     inText = document.getElementById("input4").value;
                     args.push(inText);
-                    callPHP("updateTraining.php", args);
+                    callPHP("pscripts/updateTraining.php", args);
                 }
             };
 
