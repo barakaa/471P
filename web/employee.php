@@ -52,6 +52,23 @@ if (!isset($_SESSION['user']))
                             .append('Rented  <input type="radio" name = "status" value="rented">')
                             .append('Under Maintenence  <input type="radio" name = "status" value="maintenance">')
                             .append('<br>Location Name  <input type="text" id = "input loc name"><br>')
+                            .append('Powered  <input type="radio" name = "type" value="power" checked>')
+                            .append('Other  <input type="radio" name = "type" value="other">')
+                            .append('<br> Fuel Type <input type="text" id = "input pow1"><br>')
+                            .append('Fuel Economy (L/100km) <input type="text" id = "input pow2"><br>')
+                            .append('Cargo Capacity <input type="text" id = "input pow3"><br>')
+                            .append('Max Occupants <input type="text" id = "input pow4"><br>')
+                            .append('Intended Use <input type="text" id = "input unpow1"><br>')
+                            .append('Insurance Required: Yes <input type="radio" name="insur" value = "yes" checked>')
+                            .append(' No <input type="radio" name="insur" value = "no"">')
+
+
+
+
+
+
+
+
 
                 button = document.getElementById("submit new equipment");
                 button.onclick = function() {
@@ -65,8 +82,34 @@ if (!isset($_SESSION['user']))
                     testArgs.push(temp);
                     temp = document.getElementById("input loc name").value;
                     testArgs.push(temp);
-                    temp = Date.now();
+
+                    //Check if powered or unpowered is checked
+                    temp = $('input[name=type]:checked', '#input').val();
+                    temp = temp.toString();
                     testArgs.push(temp);
+
+                    //Add arguments based on which is selected
+                    if (temp === "power"){
+                        console.log("adding powered");
+                        temp = document.getElementById("input pow1").value;
+                        testArgs.push(temp);
+                        temp = document.getElementById("input pow2").value;
+                        testArgs.push(temp);
+                        temp = document.getElementById("input pow3").value;
+                        testArgs.push(temp);
+                        temp = document.getElementById("input pow4").value;
+                        testArgs.push(temp);
+                    } else {
+                        console.log("adding unpowered");
+                        temp = document.getElementById("input unpow1").value;
+                        testArgs.push(temp);
+                        temp = $('input[name=insur]:checked', '#input').val();
+                        temp = temp.toString();
+                        testArgs.push(temp);
+                    }
+
+
+
                     callPHP("pscripts/addEquip.php", testArgs);
                 }
             };
@@ -214,14 +257,10 @@ if (!isset($_SESSION['user']))
             button.onclick = function(){
                 $('#commandTitle').empty()
                     .append("Display User List")
-                $('#inputArea').empty()
-                    .append('<button id = "submit button"> Get Users </button>')
 
-                button = document.getElementById("submit button");
-                button.onclick = function(){
-                    let args = [];
-                    callPHP("pscripts/dispUsers.php", args);
-                }
+                let args = [];
+                callPHP("pscripts/dispUsers.php", args);
+
             };
 
 
@@ -229,14 +268,10 @@ if (!isset($_SESSION['user']))
             button.onclick = function(){
                 $('#commandTitle').empty()
                     .append("Display Rental List")
-                $('#inputArea').empty()
-                    .append('<button id = "submit button"> Get Rentals </button>')
 
-                button = document.getElementById("submit button");
-                button.onclick = function(){
-                    let args = [];
-                    callPHP("pscripts/dispRentals.php", args);
-                }
+                let args = [];
+                callPHP("pscripts/dispRentals.php", args);
+
             };
 
 
@@ -244,14 +279,9 @@ if (!isset($_SESSION['user']))
             button.onclick = function(){
                 $('#commandTitle').empty()
                     .append("Display Maintanence Schedule")
-                $('#inputArea').empty()
-                    .append('<button id = "submit button"> Get Maintenence </button>')
-
-                button = document.getElementById("submit button");
-                button.onclick = function(){
                     let args = [];
                     callPHP("pscripts/dispMaint.php", args);
-                }
+
             };
 
             button = document.getElementById("button11");

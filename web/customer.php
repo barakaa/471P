@@ -48,7 +48,6 @@ if (!isset($_SESSION['user']))
                     .append('<form id="input"></form>')
                     .append('<button id = "submit button"> Submit </button>')
                 $('#input').append('Equipment ID <input type="text" id = "input1"><br>')
-                    .append('Username <input type="text" id = "input2"><br>')
                     .append('Start Date <input type="date" id = "input3"><br>')
                     .append('End Date <input type="date" id = "input4"><br>')
 
@@ -57,8 +56,6 @@ if (!isset($_SESSION['user']))
                 button.onclick = function(){
                     let args = [];
                     let inText = document.getElementById("input1").value;
-                    args.push(inText);
-                    inText = document.getElementById("input2").value;
                     args.push(inText);
                     inText = document.getElementById("input3").value;
                     args.push(inText);
