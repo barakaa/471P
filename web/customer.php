@@ -47,6 +47,7 @@ if (!isset($_SESSION['user']))
                 $('#inputArea').empty()
                     .append('<form id="input"></form>')
                     .append('<button id = "submit button"> Submit </button>')
+                    .append('<button id = "get price button"> Get Price </button>')
                 $('#input').append('Equipment ID <input type="text" id = "input1"><br>')
                     .append('Start Date <input type="date" id = "input3"><br>')
                     .append('End Date <input type="date" id = "input4"><br>')
@@ -62,6 +63,18 @@ if (!isset($_SESSION['user']))
                     inText = document.getElementById("input4").value;
                     args.push(inText);
                     callPHP("pscripts/placeRental.php", args);
+                }
+
+                button = document.getElementById("get price button");
+                button.onclick = function(){
+                    let args = [];
+                    let inText = document.getElementById("input1").value;
+                    args.push(inText);
+                    inText = document.getElementById("input3").value;
+                    args.push(inText);
+                    inText = document.getElementById("input4").value;
+                    args.push(inText);
+                    callPHP("pscripts/getPrice.php", args);
                 }
 
             };
