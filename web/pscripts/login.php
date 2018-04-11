@@ -9,7 +9,7 @@ if (empty($luser) || empty($lpass)) {
     mysqli_close($conn);
     exit();
 }elseif (strlen($luser) < 4 || strlen($lpass) < 4 || strlen($luser) > 30 || strlen($lpass) > 30) {
-    header("Location: ../register.php?reg=invalid");
+    header("Location: ../index.php?login=invalid");
     mysqli_close($conn);
     exit();
 } else {
