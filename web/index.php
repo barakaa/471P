@@ -13,11 +13,13 @@
             <table>
                 <tr>
                     <td><label for="username">Username:</label></td>
-                    <td><input id="username" type="text" name="username"></td>
+                    <td><input id="username" type="text" name="username" pattern=".{4,30}"
+                        placeholder="Username" title="length at least 4, numbers/letters only"></td>
                 </tr>
                 <tr>
                     <td><label for="password">Password:</label></td>
-                    <td><input id="password" type="password" name="password"></td>
+                    <td><input id="password" type="password" name="password" pattern=".{4,30}"
+                        placeholder="Password" title="length at least 4, numbers/letters only"></td>
                 </tr>
                 <tr>
                     <td colspan="2" class="buttons">

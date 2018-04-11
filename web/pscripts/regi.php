@@ -8,6 +8,10 @@ if (empty($luser) || empty($ldob) || empty($lpass)) {
     header("Location ../register.php?reg=empty");
     mysqli_close($conn);
     exit();
+}elseif (strlen($luser) < 4 || strlen($lpass) < 4 || strlen($luser) > 30 || strlen($lpass) > 30) {
+    header("Location: ../register.php?reg=invalid");
+    mysqli_close($conn);
+    exit();
 } else {
     if (preg_match("/[^a-zA-Z0-9]/", $luser) || preg_match("/[^\-0-9]/", $ldob) || preg_match("/[^a-zA-Z0-9]/", $lpass)) {
         header("Location: ../register.php?reg=invalid");
