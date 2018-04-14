@@ -5,11 +5,10 @@ if (!$conn) die("Connection failed: " . mysqli_connect_error());
 $equipId = mysqli_real_escape_string($conn, $_REQUEST['arg0']);
 $campId = mysqli_real_escape_string($conn, $_REQUEST['arg1']);
 $empName = mysqli_real_escape_string($conn, $_REQUEST['arg2']);
-echo "$equipId $campId $empName<br>";
 if (strlen($equipId) == 0 || strlen($campId) == 0 || strlen($empName) == 0) {
     echo "fields can not be empty<br>";
-} elseif (preg_match("/[^a-zA-Z0-9]/", $empName) || preg_match("", $campId)) {
-    echo "username must be alphanumeric<br>";
+} elseif (preg_match("/[^a-zA-Z0-9]/", $empName) || preg_match("/[^a-zA-Z0-9]/", $campId)) {
+    echo "Username and camp must be alphanumeric<br>";
 } else {
     $campQ = "SELECT * FROM training_camp WHERE equip_id=$equipId AND camp_id='$campId'";
     $campRes = mysqli_query($conn, $campQ);

@@ -1,5 +1,5 @@
 <?php
-
+session_start();
 include_once('db.php');
 if (!$conn) die("Connection failed: " . mysqli_connect_error());
 
@@ -31,4 +31,5 @@ while($tuple = $result->fetch_assoc()){
         echo "</tr>";
     }
 }
+echo "</table>";
 $conn->close();

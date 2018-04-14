@@ -14,17 +14,13 @@ $result = "INSERT INTO equipment (price_per_day, weight, status, loc_name)
 VALUES ('$price_per_day', '$weight', '$status', '$location')";
 
 if ($conn->query($result) === TRUE) {
-    echo "Record created";
+    //echo "Record created";
 } else {
     echo "Error creating record: " . $result . "<br>" . $conn->error;
 }
 
 $id = $conn->insert_id;
 
-
-echo "<br>DEBUG: result is " . $id;
-
-echo "<br>DEBUG <br>";
 
 $type = mysqli_real_escape_string($conn, $_REQUEST["arg4"]);
 if ($type == "power"){

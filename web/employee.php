@@ -31,8 +31,8 @@ if (!isset($_SESSION['user']))
                 urlString = urlString + "arg" + i + "=" + args[i] + "&";
             }
             urlString.slice(0, urlString.length-2);
-            console.log("what is being called: " +
-                urlString.slice(0, urlString.length-1));
+            /*console.log("what is being called: " +
+                urlString.slice(0, urlString.length-1));*/
             toSend.open("GET", urlString.slice(0, urlString.length-1), true);
             toSend.send();
         }
@@ -238,6 +238,7 @@ if (!isset($_SESSION['user']))
                 $('#input').append('Equipment ID <input id = "input1" type="text"><br>')
                     .append('Rental Start Date <input id = "input2" type="date"><br>')
                     .append('Rental Return Date <input id = "input3" type="date"><br>')
+                    .append('Username <input id = "input4" type="text"><br>')
 
                 button = document.getElementById("submit button");
                 button.onclick = function(){
@@ -247,6 +248,8 @@ if (!isset($_SESSION['user']))
                     inText = document.getElementById("input2").value;
                     args.push(inText);
                     inText = document.getElementById("input3").value;
+                    args.push(inText);
+                    inText = document.getElementById("input4").value;
                     args.push(inText);
                     callPHP("pscripts/updateRental.php", args);
                 }
@@ -449,7 +452,7 @@ if (!isset($_SESSION['user']))
         <h3 style="padding-top: 4%; padding-bottom: 10%">Main Menu</h3>
         <button class = "menuButton" id = "button1" type="button">Add new Equipment</button>
         <button class = "menuButton" id = "button2" type="button">Remove Equipment</button>
-        <button class = "menuButton" id = "button3" type="button">Confirm user card</button>
+        <button class = "menuButton" id = "button3" type="button" style = "display: none">Confirm user card</button>
         <button class = "menuButton" id = "button4" type="button">Create new Maintanence</button>
         <button class = "menuButton" id = "button5" type="button">Update account information</button>
         <button class = "menuButton" id = "button10" type="button">Upgrade user account</button>
